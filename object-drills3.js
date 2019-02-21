@@ -2,11 +2,11 @@
 
 /* Problem 1 */
 const loaf = {
-  flour: 300,
-  water: 210,
-  hydration: function() {
-    return this.water / this.flour * 100;
-  }
+    flour: 300,
+    water: 210,
+    hydration: function() {
+        return this.water / this.flour * 100;
+    }
 };
 
 console.log(`loaf has ${loaf.flour} flour and ${loaf.water} water`);
@@ -15,21 +15,21 @@ console.log(`flour hydration is ${loaf.hydration()}`);
 /*Problem 2 */
 
 let item = {
-  foo: 1,
-  bar: 2,
-  fum: 3,
-  quux: 4,
-  spam: 5,
+    foo: 1,
+    bar: 2,
+    fum: 3,
+    quux: 4,
+    spam: 5,
 };
 
 for (let i in item) {
-  console.log(i + ":" + item[i]);
+    console.log(i + ":" + item[i]);
 }
 
 /*Problem 3 */
 
 const obj = {
-  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
+    meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
 };
 console.log(obj.meals[3]);
 
@@ -37,84 +37,84 @@ console.log(obj.meals[3]);
 
 
 const People1 = {
-  name: 'A',
-  job: 1,
+    name: 'A',
+    job: 1,
 };
 
 const People2 = {
-  name: 'B',
-  job: 2,
+    name: 'B',
+    job: 2,
 };
 
 const People3 = {
-  name: 'C',
-  job: 3,
+    name: 'C',
+    job: 3,
 };
 
 const People4 = {
-  name: 'D',
-  job: 4,
+    name: 'D',
+    job: 4,
 };
 
 let arr = [People1, People2, People3, People4];
 for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i].name + ":" + arr[i].job);
+    console.log(arr[i].name + ":" + arr[i].job);
 }
 
 
 /* Problem 5 */
 
 const People5 = {
-  name: 'A',
-  job: 'Owner',
+    name: 'A',
+    job: 'Owner',
 };
 
 const People6 = {
-  name: 'B',
-  job: 'Manager',
-  boss: 'A',
+    name: 'B',
+    job: 'Manager',
+    boss: 'A',
 };
 
 const People7 = {
-  name: 'C',
-  job: 'Worker',
-  boss: 'A',
+    name: 'C',
+    job: 'Worker',
+    boss: 'A',
 };
 
 const People8 = {
-  name: 'D',
-  job: 'Janitor',
-  boss: 'A',
+    name: 'D',
+    job: 'Janitor',
+    boss: 'A',
 };
 
 let arr2 = [People5, People6, People7, People8];
 for (let i = 0; i < arr.length; i++) {
-  if (arr2[i].hasOwnProperty('boss')) {
-    console.log(`${arr2[i].job} ${arr2[i].name} reports to ${arr2[i].boss}.`);
-  } else { console.log(`${arr2[i].job} ${arr2[i].name} doesn't report to anybody.`); }
+    if (arr2[i].hasOwnProperty('boss')) {
+        console.log(`${arr2[i].job} ${arr2[i].name} reports to ${arr2[i].boss}.`);
+    } else { console.log(`${arr2[i].job} ${arr2[i].name} doesn't report to anybody.`); }
 
 }
 
 /* Problem 6 */
 
 let cipher = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
 }
 
 function decode(code) {
-  let words = code.split(' ');
-  let answer = '';
-  for (let i = 0; i < words.length; i++) {
-    if (cipher.hasOwnProperty(words[i][0])) {
-      answer += words[i][cipher[words[i][0]]];
-    } else {
-      answer += ' ';
+    let words = code.split(' ');
+    let answer = '';
+    for (let i = 0; i < words.length; i++) {
+        if (cipher.hasOwnProperty(words[i][0])) {
+            answer += words[i][cipher[words[i][0]]];
+        } else {
+            answer += ' ';
+        }
     }
-  }
-  return answer;
+    return answer;
 }
 
 console.log(decode('craft block argon meter bells brown croon droop'));
@@ -123,30 +123,36 @@ console.log(decode('craft block argon meter bells brown croon droop'));
 
 
 function createCharacter(name, nickname, race, origin, attack, defense) {
-  return {
-    name, nickname, race, origin, attack, defense,
-    describe: function() {
-      console.log(`${name} is a ${race} from ${origin}.`);
-    },
-    evaluateFight: function(character) {
-      let takes = 0;
-      let receive = 0;
-      if (this.attack > character.defense) {
-        takes = this.attack - character.defense;
-      }
-      if (character.attack > this.defense) {
-        receive = character.attack - this.defense;
-      }
-      console.log(`Your opponent takes ${takes} damage and you receive ${receive} damage`);
-    },
-  };
+    return {
+        name,
+        nickname,
+        race,
+        origin,
+        attack,
+        defense,
+        describe: function() {
+            console.log(`${name} is a ${race} from ${origin}.`);
+        },
+        evaluateFight: function(character) {
+            let takes = 0;
+            let receive = 0;
+            if (this.attack > character.defense) {
+                takes = this.attack - character.defense;
+            }
+            if (character.attack > this.defense) {
+                receive = character.attack - this.defense;
+            }
+            console.log(`Your opponent takes ${takes} damage and you receive ${receive} damage`);
+        },
+    };
 }
 
-let characters = [createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6), 
-  createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1), 
-  createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2),
-  createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Eunnedain', 6, 8),
-  createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5)];
+let characters = [createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6),
+    createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1),
+    createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2),
+    createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8),
+    createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5)
+];
 
 characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 5, 5));
 
@@ -158,3 +164,64 @@ let highAttack = characters.filter(x => x.attack > 5);
 
 //to add a weapon, we'd create a new key, in describe() we'd include key in the console log statement
 
+/* Problem 8 */
+
+const HEROES = [
+    { id: 1, name: 'Captain America', squad: 'Avengers' },
+    { id: 2, name: 'Iron Man', squad: 'Avengers' },
+    { id: 3, name: 'Spiderman', squad: 'Avengers' },
+    { id: 4, name: 'Superman', squad: 'Justice League' },
+    { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+    { id: 6, name: 'Aquaman', squad: 'Justice League' },
+    { id: 7, name: 'Hulk', squad: 'Avengers' },
+];
+
+function findOne(arr, query) {
+    for (let i = 0; i < arr.length; i++) {
+        let matching = true;
+        for (let key in query) {
+            if (arr[i][key] !== query[key]) {
+                matching = false;
+                break;
+            }
+        }
+        if (matching) {
+            return arr[i];
+        }
+    }
+    return null;
+}
+
+console.log(findOne(HEROES, { squad: 'Justice League' }));
+
+/* Problem 8a */
+
+const Database = {
+    store: {
+        heroes2: [
+            { id: 1, name: 'Captain America', squad: 'Avengers' },
+            { id: 2, name: 'Iron Man', squad: 'Avengers' },
+            { id: 3, name: 'Spiderman', squad: 'Avengers' },
+            { id: 4, name: 'Superman', squad: 'Justice League' },
+            { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+            { id: 6, name: 'Aquaman', squad: 'Justice League' },
+            { id: 7, name: 'Hulk', squad: 'Avengers' },
+        ]
+    },
+
+    findOne2: function(query) {
+        for (let i = 0; i < this.store.length; i++) {
+            let matching = true;
+            for (let key in query) {
+                if (this.store[i][key] !== query[key]) {
+                    matching = false;
+                    break;
+                }
+            }
+            if (matching) {
+                return this.store[i];
+            }
+        }
+        return null;
+    }
+};
